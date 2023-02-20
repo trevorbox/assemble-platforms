@@ -6,9 +6,9 @@ spec:
   generators:
     - git:
         repoURL: 'https://github.com/trevorbox/assemble-platforms.git'
-        revision: main
+        revision: gitops
         files:
-          - path: {{ printf "deploy/clusters/%s/namespaces/*.yaml" .Values.cluster.name }}
+          - path: deploy/clusters/*.yaml
   template:
     metadata:
       name: >-

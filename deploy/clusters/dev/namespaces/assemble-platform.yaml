@@ -1,3 +1,0 @@
-env: dev
-targetRevision: gitops # main
-addFinalizer: true
