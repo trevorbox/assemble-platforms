@@ -15,7 +15,7 @@ spec:
       include: instance.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: openshift-devspaces
+    namespace: assemble-devspaces
   syncPolicy:
     automated:
       prune: true
