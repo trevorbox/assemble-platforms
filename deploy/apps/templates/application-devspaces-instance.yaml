@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/janus-idp/assemble-platforms.git
+    repoURL: https://github.com/trevorbox/assemble-platforms.git
     targetRevision: gitops
     path: infra/object-definitions/devspaces
     directory:

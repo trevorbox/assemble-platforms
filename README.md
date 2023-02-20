@@ -193,8 +193,9 @@ Install openshift-gitops-operator...
 helm upgrade -i openshift-gitops-operator deploy/helm/openshift-gitops-operator -n openshift-operators
 ```
 
-Create argocd instance...
+Create platform services
 
 ```sh
-
+helm upgrade -i assemble-platform deploy/applicationset -n openshift-gitops
+helm delete assemble-platform -n openshift-gitops
 ```
