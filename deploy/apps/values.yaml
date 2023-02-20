@@ -1,0 +1,6 @@
+apps:
+  devspaces:
+    operator:
+      enabled: true
+    instance:
+      enabled: true

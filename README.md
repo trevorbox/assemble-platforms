@@ -184,3 +184,17 @@ helm upgrade --install pipelines charts/pipelines-operator -n assemble-pipelines
 ### TBD
 
 More information about some stuff the user can do once the Backstage UI is up.
+
+## deploy
+
+Install openshift-gitops-operator...
+
+```sh
+helm upgrade -i openshift-gitops-operator deploy/helm/openshift-gitops-operator -n openshift-operators
+```
+
+Create argocd instance...
+
+```sh
+
+```

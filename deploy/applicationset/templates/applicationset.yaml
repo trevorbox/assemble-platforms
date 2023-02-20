@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: assemble-platform
+spec:
+  generators:
+    - git:
+        repoURL: 'https://github.com/trevorbox/assemble-platforms.git'
+        revision: main
+        files:
+          - path: {{ printf "deploy/clusters/%s/namespaces/*.yaml" .Values.cluster.name }}
+  template:
+    metadata:
+      name: >-
+        {{ printf "assemble-platform-{{env}}" }}
+    spec:
+      project: default
+      source:
+        path: deploy/apps
+        repoURL: 'https://github.com/trevorbox/assemble-platforms.git'
+        targetRevision: >-
+          {{ printf "{{targetRevision}}" }}
+        helm:
+          valueFiles:
+            - {{ printf "values-cluster-{{env}}.yaml" }}
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: >-
+          {{ printf "assemble-platform-{{env}}" }}
+      syncPolicy:
+        automated: 
+          prune: true
+          selfHeal: true
