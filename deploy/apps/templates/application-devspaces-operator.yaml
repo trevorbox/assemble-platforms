@@ -1,10 +1,10 @@
-{{- if apps.devspaces.operator.enabled }}
+{{- if .Values.apps.devspaces.operator.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: devspaces-operator
   finalizers:
-  - resources-finalizer.argocd.argoproj.io  
+    - resources-finalizer.argocd.argoproj.io  
 spec:
   project: default
   source:

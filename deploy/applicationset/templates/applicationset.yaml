@@ -11,8 +11,7 @@ spec:
           - path: deploy/clusters/*.yaml
   template:
     metadata:
-      name: >-
-        {{ printf "assemble-platform-{{env}}" }}
+      name: assemble-platform
     spec:
       project: default
       source:
