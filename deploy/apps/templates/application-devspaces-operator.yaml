@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/janus-idp/assemble-platforms.git
-    targetRevision: HEAD
+    targetRevision: gitops
     path: infra/object-definitions/devspaces
     directory:
       include: operator.yaml
