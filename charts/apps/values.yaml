@@ -6,15 +6,14 @@ apps:
       enabled: true
   rhsso:
     enabled: true
+    # TODO need to patch keycloakrealm with credentials from k8s secret, potentially created from vault 
+    keycloak:
+      realm:
+        identityProvider:
+          clientId:
+          clientSecret: 
+          enabled: 
+      backstage:
+        host: 
   pipelines:
     enabled: true
-
-# TODO need to patch keycloakrealm with credentials from k8s secret, potentially created from vault  
-keycloak:
-  realm:
-    identityProvider:
-      clientId: "TODO"
-      clientSecret: "TODO"
-      enabled: "true"
-  backstage:
-    host: {{ .Values.apps.rhsso.backstage.host }}

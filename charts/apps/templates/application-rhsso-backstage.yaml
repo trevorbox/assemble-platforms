@@ -12,7 +12,18 @@ spec:
   source:
     path: charts/rhsso-backstage
     repoURL: https://github.com/trevorbox/assemble-platforms.git
-    targetRevision: gitops     
+    targetRevision: gitops  
+    helm:
+      # TODO need to patch keycloakrealm with credentials from k8s secret, potentially created from vault  
+      parameters:
+        - name: keycloak.realm.identityProvider.clientId
+          value: {{ .Values.apps.rhsso.keycloak.realm.identityProvider.clientId | quote }}
+        - name: keycloak.realm.identityProvider.clientSecret
+          value: {{ .Values.apps.rhsso.keycloak.realm.identityProvider.clientSecret | quote }}
+        - name: keycloak.realm.identityProvider.enabled
+          value: {{ .Values.apps.rhsso.keycloak.realm.identityProvider.enabled | quote }}
+        - name: keycloak.backstage.host
+          value: {{ .Values.apps.rhsso.keycloak.backstage.host }}
   project: default
   syncPolicy:
     automated: 

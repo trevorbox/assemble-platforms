@@ -1,0 +1,11 @@
+# TODO need to patch keycloakrealm with credentials from k8s secret, potentially created from vault
+apps:
+  rhsso:
+    keycloak:
+      realm:
+        identityProvider:
+          clientId: "TODO"
+          clientSecret: "TODO"
+          enabled: "true"
+      backstage:
+        host: assemble-demo.apps-crc.testing
