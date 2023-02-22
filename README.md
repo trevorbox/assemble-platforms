@@ -190,12 +190,24 @@ More information about some stuff the user can do once the Backstage UI is up.
 Install openshift-gitops-operator...
 
 ```sh
-helm upgrade -i openshift-gitops-operator deploy/helm/openshift-gitops-operator -n openshift-operators
+helm upgrade -i openshift-gitops-operator charts/gitops-operator -n assemble-argocd --create-namespace \
+  --set namespaces[0]=assemble-argocd \
+  --set namespaces[1]=infra-argocd \
+  --set repositoryCredentials[0].name=private-repo-creds \
+  --set repositoryCredentials[0].username=token \
+  --set repositoryCredentials[0].password=${GITHUB_TOKEN} \
+  --set repositoryCredentials[0].url=https://github.com/${GITHUB_ORGANIZATION} \
+  --set repositoryCredentials[0].type=git
 ```
 
 Create platform services
 
 ```sh
-helm upgrade -i assemble-platform deploy/applicationset -n openshift-gitops
-helm delete assemble-platform -n openshift-gitops
+helm upgrade -i assemble-platform deploy/applicationset -n infra-argocd
+```
+
+delete
+
+```sh
+helm delete assemble-platform -n infra-argocd
 ```

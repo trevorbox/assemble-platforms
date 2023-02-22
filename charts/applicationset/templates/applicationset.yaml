@@ -1,21 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: assemble-platform
+  name: infra-argocd
 spec:
   generators:
     - git:
         repoURL: 'https://github.com/trevorbox/assemble-platforms.git'
         revision: gitops
         files:
-          - path: deploy/clusters/*.yaml
+          - path: clusters/*.yaml
   template:
     metadata:
-      name: assemble-platform
+      name: infra-argocd
     spec:
       project: default
       source:
-        path: deploy/apps
+        path: charts/apps
         repoURL: 'https://github.com/trevorbox/assemble-platforms.git'
         targetRevision: >-
           {{ printf "{{targetRevision}}" }}
@@ -24,8 +24,7 @@ spec:
             - {{ printf "values-cluster-{{env}}.yaml" }}
       destination:
         server: https://kubernetes.default.svc
-        namespace: >-
-          {{ printf "openshift-gitops" }}
+        namespace: infra-argocd
       syncPolicy:
         automated: 
           prune: true
