@@ -6,3 +6,5 @@ apps:
       enabled: true
   rhsso:
     enabled: true
+  pipelines:
+    enabled: true
