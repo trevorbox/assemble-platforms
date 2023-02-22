@@ -13,13 +13,7 @@ spec:
     path: charts/rhsso-backstage
     repoURL: https://github.com/trevorbox/assemble-platforms.git
     targetRevision: gitops
-    # TODO need to path keycloakrealm with credentials from k8s secret, potentially created from vault RE this snippet
-    # keycloak:
-    #   realm:
-    #     identityProvider:
-    #       clientId: "{{ lookup('ansible.builtin.env', 'GITHUB_CLIENT_ID') }}"
-    #       clientSecret: "{{ lookup('ansible.builtin.env', 'GITHUB_CLIENT_SECRET') }}"
-    #       enabled: "{{ false if lookup('ansible.builtin.env', 'GITHUB_CLIENT_SECRET') == '' else true }}" 
+    # TODO need to path keycloakrealm with credentials from k8s secret, potentially created from vault
     # helm:
     #   valueFiles:
     #     - values-rhsso-operator.yaml
