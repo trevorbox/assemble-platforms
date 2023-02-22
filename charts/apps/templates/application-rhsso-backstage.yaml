@@ -12,18 +12,7 @@ spec:
   source:
     path: charts/rhsso-backstage
     repoURL: https://github.com/trevorbox/assemble-platforms.git
-    targetRevision: gitops
-    # TODO need to path keycloakrealm with credentials from k8s secret, potentially created from vault
-    helm:
-      parameters:
-        keycloak:
-          realm:
-            identityProvider:
-              clientId: "TODO"
-              clientSecret: "TODO"
-              enabled: "true"
-        backstage:
-          host: {{ .Values.apps.rhsso.backstage.host }}
+    targetRevision: gitops     
   project: default
   syncPolicy:
     automated: 

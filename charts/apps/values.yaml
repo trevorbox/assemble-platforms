@@ -6,7 +6,15 @@ apps:
       enabled: true
   rhsso:
     enabled: true
-    backstage:
-      host: "assemble-demo.apps-crc.testing"
   pipelines:
     enabled: true
+
+# TODO need to patch keycloakrealm with credentials from k8s secret, potentially created from vault  
+keycloak:
+  realm:
+    identityProvider:
+      clientId: "TODO"
+      clientSecret: "TODO"
+      enabled: "true"
+  backstage:
+    host: {{ .Values.apps.rhsso.backstage.host }}
