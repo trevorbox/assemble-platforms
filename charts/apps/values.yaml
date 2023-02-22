@@ -7,4 +7,4 @@ apps:
   rhsso:
     enabled: true
   pipelines:
-    enabled: false
+    enabled: true
