@@ -8,8 +8,8 @@ keycloak:
     displayName: Backstage Authentication Realm
     identityProvider:
       enabled: true
-      clientId: ""
-      clientSecret: ""
+      clientId: "none"
+      clientSecret: "secret"
   client:
     name: backstage
     secretName: openshift-client

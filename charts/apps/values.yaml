@@ -6,5 +6,7 @@ apps:
       enabled: true
   rhsso:
     enabled: true
+    backstage:
+      host: "assemble-demo.apps-crc.testing"
   pipelines:
     enabled: true
