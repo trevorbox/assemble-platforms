@@ -1,0 +1,27 @@
+{{- if .Values.apps.rhsso.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rhsso-operator
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io  
+spec:
+  destination:
+    namespace: backstage
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: charts/operator
+    repoURL: https://github.com/trevorbox/assemble-platforms.git
+    targetRevision: gitops
+    helm:
+      valueFiles:
+        - values-rhsso-operator.yaml
+  project: default
+  syncPolicy:
+    automated: 
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+{{- end }}

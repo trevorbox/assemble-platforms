@@ -4,3 +4,5 @@ apps:
       enabled: true
     instance:
       enabled: true
+  rhsso:
+    enabled: true

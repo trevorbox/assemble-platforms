@@ -190,7 +190,13 @@ More information about some stuff the user can do once the Backstage UI is up.
 Install openshift-gitops-operator...
 
 ```sh
-helm upgrade -i openshift-gitops-operator charts/gitops-operator -n assemble-argocd --create-namespace \
+# helm upgrade -i openshift-gitops-operator charts/openshift-gitops-operator -n openshift-operators
+oc adm groups new cluster-admins
+oc adm groups add-users cluster-admins kubeadmin
+```
+
+```sh
+helm upgrade -i gitops-operator charts/gitops-operator -n assemble-argocd --create-namespace \
   --set namespaces[0]=assemble-argocd \
   --set namespaces[1]=infra-argocd \
   --set repositoryCredentials[0].name=private-repo-creds \
@@ -205,6 +211,14 @@ Create platform services
 ```sh
 helm upgrade -i assemble-platform charts/applicationset -n infra-argocd
 ```
+
+<!-- ```sh
+oc create route edge argocd-applicationset-controller --service=argocd-applicationset-controller --port=webhook -n infra-argocd
+echo "Payload URL: https://$(oc get route argocd-applicationset-controller -n infra-argocd --template={{.spec.host}})"
+export mywebhooksecret=
+oc patch secret argocd-secret -p "{\"stringData\":{\"webhook.github.secret\": \"${mywebhooksecret}\"}}" -n infra-argocd
+oc rollout restart deploy argocd-applicationset-controller -n infra-argocd
+``` -->
 
 delete
 
