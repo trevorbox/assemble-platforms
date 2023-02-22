@@ -15,7 +15,7 @@ spec:
     targetRevision: gitops
     # TODO need to path keycloakrealm with credentials from k8s secret, potentially created from vault
     helm:
-      values:
+      parameters:
         keycloak:
           realm:
             identityProvider:
