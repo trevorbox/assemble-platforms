@@ -203,7 +203,7 @@ helm upgrade -i openshift-gitops-operator charts/gitops-operator -n assemble-arg
 Create platform services
 
 ```sh
-helm upgrade -i assemble-platform deploy/applicationset -n infra-argocd
+helm upgrade -i assemble-platform charts/applicationset -n infra-argocd
 ```
 
 delete
