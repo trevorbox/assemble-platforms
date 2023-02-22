@@ -22,8 +22,8 @@ spec:
           value: {{ .Values.apps.rhsso.keycloak.realm.identityProvider.clientSecret | quote }}
         - name: keycloak.realm.identityProvider.enabled
           value: {{ .Values.apps.rhsso.keycloak.realm.identityProvider.enabled | quote }}
-        - name: keycloak.backstage.host
-          value: {{ .Values.apps.rhsso.keycloak.backstage.host }}
+        - name: backstage.host
+          value: {{ .Values.apps.rhsso.backstage.host }}
   project: default
   syncPolicy:
     automated: 

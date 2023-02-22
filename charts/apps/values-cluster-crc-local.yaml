@@ -7,5 +7,5 @@ apps:
           clientId: "TODO"
           clientSecret: "TODO"
           enabled: "true"
-      backstage:
-        host: assemble-demo.apps-crc.testing
+    backstage:
+      host: assemble-demo.apps-crc.testing

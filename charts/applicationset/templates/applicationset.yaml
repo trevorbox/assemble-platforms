@@ -11,7 +11,7 @@ spec:
           - path: clusters/*.yaml
   template:
     metadata:
-      name: infra-argocd
+      name: {{ printf "infra-argocd-{{env}}" }}
     spec:
       project: default
       source:
